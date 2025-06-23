@@ -12,11 +12,14 @@ import PeopleIcon   from '@mui/icons-material/People';
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import './Search.css';
+import { useNavigate } from "react-router-dom"; 
+
 
 function Search({ triggerModal, onClose }) {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate(); 
     // Automatically open modal on click from Banner component
     useEffect(() => {
         if (triggerModal) {
@@ -58,7 +61,7 @@ function Search({ triggerModal, onClose }) {
                     <h2> Number of guests <PeopleIcon/></h2>
                     <input min={1} defaultValue={2} type="number" /> 
 
-                    <Button variant="contained" onClick={() => console.log(startDate, endDate)}>
+                    <Button variant="contained" onClick={() => navigate('/search')}>
                         Search
                     </Button>
                 </Box>
